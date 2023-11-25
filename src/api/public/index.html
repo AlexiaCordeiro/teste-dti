@@ -16,14 +16,16 @@
                 <button class="button-positive"type="submit">Adicionar</button>
             </form>
 
-            <label for="filter">Filtrar Tarefas:</label>
-        <div class="custom-select">
-            <select id="filter">
-                <option value="all" selected>Todas</option>
-                <option value="done">Feitas</option>
-                <option value="undone">A Fazer</option>
-            </select>
-        </div>
+            <div id="filter">
+                <label for="filter">Filtrar:</label>
+                <div class="custom-select">
+                    <select id="dropdown-filter">
+                        <option value="all" selected>Todas</option>
+                        <option value="done">Feitas</option>
+                        <option value="undone">A Fazer</option>
+                    </select>
+                </div>
+            </div>
 
 
             <div id="taskList"></div>

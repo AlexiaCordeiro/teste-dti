@@ -97,8 +97,8 @@ function displayTasks(tasks,filterValue) {
 });
 
 // Event listener para o evento de mudança no seletor de filtro
-document.getElementById('filter').addEventListener('change', () => {
-    const filterValue = document.getElementById('filter').value;
+document.getElementById('dropdown-filter').addEventListener('change', () => {
+    const filterValue = document.getElementById('dropdown-filter').value;
     fetchAndDisplayTasks(filterValue); // Chama a função para buscar e exibir tarefas com base no filtro selecionado
 });
 
