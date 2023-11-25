@@ -102,9 +102,11 @@ document.getElementById('dropdown-filter').addEventListener('change', () => {
     fetchAndDisplayTasks(filterValue); // Chama a função para buscar e exibir tarefas com base no filtro selecionado
 });
 
-
+let isModalOpen = false;
+let modal;
 function openEditModal(task) {
-    const modal = document.createElement('div');
+    
+    modal = document.createElement('div');
     modal.classList.add('modal');
 
     const modalContent = document.createElement('div');
@@ -125,6 +127,8 @@ function openEditModal(task) {
     const [day, month, year] = task.date.split('/');
     const formattedDate = `${year}-${month}-${day}`;
     dateInput.value = formattedDate;
+    
+    //Ações de botão
 
     const saveBtn = document.createElement('button');
     saveBtn.textContent = 'Salvar';
@@ -145,6 +149,17 @@ function openEditModal(task) {
     closeBtn.addEventListener('click', () => {
         modal.remove(); // Fecha o modal ao cancelar
     });
+    // Fechar com esc
+
+    function closeModalOnEsc(event) {
+        if (event.key === 'Escape' && isModalOpen) {
+            modal.remove();
+            isModalOpen = false;
+            document.removeEventListener('keydown', closeModalOnEsc);
+        }
+    }
+
+    document.addEventListener('keydown', closeModalOnEsc);
 
     modalContent.appendChild(nameLabel);
     modalContent.appendChild(nameInput);
@@ -155,6 +170,9 @@ function openEditModal(task) {
 
     modal.appendChild(modalContent);
     document.body.appendChild(modal);
+    
+    isModalOpen = true;
+
 }
 
 // Esconde ou exibe o título 'Tarefas' com base na existência de tarefas
