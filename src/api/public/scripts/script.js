@@ -56,11 +56,18 @@ function displayTasks(tasks) {
             const isTaskDoneClass = task.done ? 'task-done' : ''; // Adiciona uma classe se a tarefa estiver concluída
             
             taskItem.innerHTML = `
-                <label>
-                    <input type="checkbox" id="task_${task.id}" name="task_${task.id}" ${(task.done ? 'checked' : '')} /> 
-                    <span class="${isTaskDoneClass}">${task.todo}</span> <!-- Adiciona a classe na tarefa -->
-                </label>
-                <button class="delete-btn" data-task-id="${task.id}">X</button>
+                <div class="task-displayer">
+                    <label>
+                        <input type="checkbox" id="task_${task.id}" name="task_${task.id}" ${(task.done ? 'checked' : '')} /> 
+                        <span class="${isTaskDoneClass}">${task.todo}</span>
+                    </label>
+                    <div class="task-actions">
+                        <div class="button-container">
+                            <button class="edit-icon" title="Editar">&#9998;</button>
+                            <button class="delete-btn" data-task-id="${task.id}">x</button>
+                        </div>
+                    </div>
+                </div>
             `;
             const checkbox = taskItem.querySelector(`#task_${task.id}`);
             checkbox.addEventListener('change', () => {
@@ -76,10 +83,67 @@ function displayTasks(tasks) {
                 deleteTask(task.id);
             });
 
+            const editBtn = taskItem.querySelector('.edit-icon');
+            editBtn.addEventListener('click', () => openEditModal(task)); // Adiciona um evento de clique para abrir o modal
+
             taskList.appendChild(taskItem);
         });
     });
-
+    function openEditModal(task) {
+        const modal = document.createElement('div');
+        modal.classList.add('modal');
+    
+        const modalContent = document.createElement('div');
+        modalContent.classList.add('modal-content');
+    
+        const nameLabel = document.createElement('label');
+        nameLabel.textContent = 'Novo nome:';
+        const nameInput = document.createElement('input');
+        nameInput.type = 'text';
+        nameInput.value = task.todo;
+    
+        const dateLabel = document.createElement('label');
+        dateLabel.textContent = 'Nova data:';
+        const dateInput = document.createElement('input');
+        dateInput.type = 'date';
+        
+        // Conversão da data para o formato 'yyyy-mm-dd'
+        const [day, month, year] = task.date.split('/');
+        const formattedDate = `${year}-${month}-${day}`;
+        dateInput.value = formattedDate;
+    
+        const saveBtn = document.createElement('button');
+        saveBtn.textContent = 'Salvar';
+        saveBtn.classList.add('save-button');
+        saveBtn.addEventListener('click', () => {
+            const updatedTodo = nameInput.value;
+            const updatedDate = dateInput.value;
+    
+            // Faça a chamada à API para atualizar a tarefa com os novos valores
+            updateTask(task.id, { todo: updatedTodo, date: updatedDate });
+    
+            modal.remove(); // Fecha o modal após salvar
+        });
+    
+        const closeBtn = document.createElement('button');
+        closeBtn.textContent = 'Cancelar';
+        closeBtn.classList.add('cancel-button');
+        closeBtn.addEventListener('click', () => {
+            modal.remove(); // Fecha o modal ao cancelar
+        });
+    
+        modalContent.appendChild(nameLabel);
+        modalContent.appendChild(nameInput);
+        modalContent.appendChild(dateLabel);
+        modalContent.appendChild(dateInput);
+        modalContent.appendChild(saveBtn);
+        modalContent.appendChild(closeBtn);
+    
+        modal.appendChild(modalContent);
+        document.body.appendChild(modal);
+    }
+    
+      
     // Esconde ou exibe o título 'Tarefas' com base na existência de tarefas
     const headingTarefas = document.querySelector('.classTitle');
     if (tasks.length === 0) {
@@ -110,6 +174,10 @@ document.getElementById('taskForm').addEventListener('submit', (event) => {
     // Verifica se a data selecionada é no futuro, exibe um alerta se não for
     if (selectedDate.getTime() < currentDate.getTime()) {
         alert("A data deve ser no futuro. Por favor, selecione outra data.");
+        return;
+    }
+    if (selectedDate.getFullYear() > currentDate.getFullYear() + 10){
+        alert("A data deve estar dentro de 10 anos. Por favor, selecione outra data.");
         return;
     }
 
@@ -165,6 +233,23 @@ function groupTasksByDate(tasks) {
     });
 
     return sortedGroupedTasks;
+}
+
+function updateTask(taskId, newData) {
+    fetch(`/api/tasks/${taskId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        fetchAndDisplayTasks(); // Atualiza e exibe as tarefas após atualizar
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 }
 
 // Função para atualizar o status de uma tarefa
