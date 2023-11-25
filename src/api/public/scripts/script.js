@@ -36,8 +36,8 @@ function displayTasks(tasks,filterValue) {
 
     // Ordena as datas
     const sortedDates = Object.keys(groupedTasks).sort((a, b) => {
-        const dateA = convertToDateObject(a); // Converte a string de data em objeto Date
-        const dateB = convertToDateObject(b); // Converte a string de data em objeto Date
+        const dateA = convertToDateObject(a); 
+        const dateB = convertToDateObject(b); 
         return dateA - dateB;
     });
 
@@ -51,8 +51,8 @@ function displayTasks(tasks,filterValue) {
         
         // Ordena as tarefas para esta data por data
         tasksForDate.sort((a, b) => {
-            const dateA = convertToDateObject(a.date); // Converte a string de data em objeto Date
-            const dateB = convertToDateObject(b.date); // Converte a string de data em objeto Date
+            const dateA = convertToDateObject(a.date); 
+            const dateB = convertToDateObject(b.date); 
             return dateA - dateB;
         });
 
@@ -78,8 +78,8 @@ function displayTasks(tasks,filterValue) {
             const checkbox = taskItem.querySelector(`#task_${task.id}`);
             checkbox.addEventListener('change', () => {
                 updateTaskStatus(task.id, checkbox.checked);
-                const taskText = taskItem.querySelector('span'); // Seleciona o elemento span dentro do item de tarefa
-                taskText.classList.toggle('task-done', checkbox.checked); // Adiciona ou remove a classe 'task-done' baseada no estado do checkbox
+                const taskText = taskItem.querySelector('span'); 
+                taskText.classList.toggle('task-done', checkbox.checked); 
             });
         
 
@@ -90,7 +90,7 @@ function displayTasks(tasks,filterValue) {
             });
 
             const editBtn = taskItem.querySelector('.edit-icon');
-            editBtn.addEventListener('click', () => openEditModal(task)); // Adiciona um evento de clique para abrir o modal
+            editBtn.addEventListener('click', () => openEditModal(task)); 
 
             taskList.appendChild(taskItem);
         });
@@ -170,7 +170,7 @@ function openEditModal(task) {
 
     modal.appendChild(modalContent);
     document.body.appendChild(modal);
-    
+
     isModalOpen = true;
 
 }
@@ -294,7 +294,7 @@ fetch(`/api/tasks/${taskId}`, {
 })
 .then(response => response.json())
 .then(data => {
-    fetchAndDisplayTasks(); // Atualiza e exibe as tarefas após marcar como feita
+    fetchAndDisplayTasks(); 
 })
 .catch(error => {
     console.error('Error:', error);
@@ -308,7 +308,7 @@ fetch(`/api/tasks/${taskId}`, {
 })
 .then(response => {
     if (response.ok) {
-        fetchAndDisplayTasks(); // Atualiza e exibe as tarefas após deletar
+        fetchAndDisplayTasks(); 
     } else {
         throw new Error('Failed to delete task');
     }

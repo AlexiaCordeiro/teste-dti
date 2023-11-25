@@ -68,7 +68,7 @@ exports.updateTask = (req, res, next) => {
     var data = {
         todo: req.body.todo,
         date: req.body.date,
-        done: req.body.done || 0 // Valor padrão é 0 (falso) se 'done' não for informado
+        done: req.body.done || 0
     };
     db.run(
         `UPDATE tasks 
@@ -79,7 +79,7 @@ exports.updateTask = (req, res, next) => {
         [data.todo, data.date, data.done, req.params.id],
         function (err, result) {
             if (err){
-                res.status(400).json({"error": err.message}); // Retorna mensagem de erro em caso de falha
+                res.status(400).json({"error": err.message}); 
                 return;
             }
             res.json({
@@ -97,7 +97,7 @@ exports.deleteTask = (req, res, next) => {
         req.params.id,
         function (err, result) {
             if (err){
-                res.status(400).json({"error": err.message}); // Retorna mensagem de erro em caso de falha
+                res.status(400).json({"error": err.message}); 
                 return;
             }
             res.json({"message": "deleted", changes: this.changes}); // Retorna mensagem de sucesso com as alterações
