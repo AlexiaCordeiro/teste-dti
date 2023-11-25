@@ -1,0 +1,223 @@
+/* Estilos gerais */
+body {
+    font-family: 'Roboto', sans-serif; /* Aplica a fonte Roboto ao corpo */
+    margin: 0;
+    padding: 0;
+    background-color: #272128;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container externo */
+.outer-container {
+    background-color: #3C313E;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%; /* Ajusta a largura */
+    max-width: 800px; /* Largura máxima */
+    border-radius: 10px;
+}
+
+/* Container principal */
+.container {
+    max-width: 100%; /* Preenche a largura do container externo */
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Estilo para títulos h1 */
+h1 {
+    margin-top: 0;
+    font-size: 24px;
+    color: #D1BDD6;
+}
+
+/* Estilo para subtítulos h2 */
+h2 {
+    margin: 20px 0;
+    font-size: 20px;
+    color: #D1BDD6; /* Cor para a data */
+    text-align: center; /* Centraliza o texto */
+}
+
+/* Estilos para o formulário */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Estilos para rótulos */
+label {
+    margin-right: 10px;
+    color: #D1BDD6;
+}
+
+/* Estilos para inputs e botão */
+input[type="text"],
+input[type="date"],
+button {
+    padding: 8px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: whitesmoke;
+    color: black;
+    border: none; /* Remove a borda */
+    outline: none; /* Remove o contorno ao focar */
+}
+
+input[type="text"] {
+    width: 80%; /* Ajuste a largura conforme desejado */
+}
+
+button {
+    cursor: pointer;
+    background-color: #CF6260;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: rgb(20, 95, 1)
+}
+
+/* Lista de tarefas */
+#taskList {
+    border-top: 1px solid #443847;
+    padding-top: 10px;
+    text-align: left;
+    scrollbar-width: thin; 
+    scrollbar-color: #443847 #443847; 
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 20px; 
+}
+
+/* Estilos para itens da lista de tarefas */
+#taskList div {
+    position: relative; 
+    margin-bottom: 10px;
+    padding: 8px;
+    background-color: #443847;
+    border-radius: 4px;
+    display: flex;
+    align-items: center; /* Alinha os itens verticalmente */
+    height: auto;
+    max-width: 100%;
+    text-align: justify;
+    padding-right: 40px; /* Ajuste o valor conforme a largura do botão */
+}   
+/* Estilo para texto da tarefa */
+.task-text {
+    flex-grow: 2; /* Permite que o texto da tarefa ocupe o espaço restante */
+    color: #fff;
+    text-align: left;
+    padding-right: 20px; /* Adiciona um espaço à direita do texto */
+}
+
+/* Estilos para scroll (para navegadores específicos) */
+#taskList::-webkit-scrollbar {
+    width: 10px;
+}
+
+#taskList::-webkit-scrollbar-track {
+    background: #443847;
+}
+
+#taskList::-webkit-scrollbar-thumb {
+    background: #CF6260;
+    border-radius: 5px;
+}
+
+#taskList::-webkit-scrollbar-thumb:hover {
+    background: #a0403e;
+}
+
+/* Botão de exclusão */
+.delete-btn {
+    padding: 5px 10px;
+    background-color: #443847;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: absolute; /* Posiciona o botão de exclusão */
+    right: 5px; /* Ajusta conforme necessário */
+    top: 50%; /* Centraliza verticalmente */
+    transform: translateY(-50%); /* Centraliza verticalmente */
+    min-width: 16px; /* Define a largura mínima desejada */
+}
+
+.delete-btn:hover {
+    background-color: #3C313E;
+}
+
+/* Estilo para checkboxes */
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    min-width: 16px;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #fff;
+    border-radius: 3px;
+    outline: none;
+    position: relative;
+    transition: background-color 0.3s, border-color 0.3s;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+/* Estilo para checkbox quando marcado */
+input[type="checkbox"]:checked {
+    background-color: #CF6260;
+    border-color: #CF6260;
+    text-decoration: line-through;
+}
+
+/* Estilo para label do checkbox */
+label {
+    display: flex;
+    align-items: center;
+    color: #D1BDD6;
+}
+
+/* Esconde visualmente o checkbox padrão */
+input[type="checkbox"]::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    border-radius: 2px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Estilo para o indicador do checkbox quando marcado */
+input[type="checkbox"]:checked::before {
+    background-color: #fff;
+    transform: rotate(45deg);
+    top: 3px;
+    left: 4px;
+    right: 4px;
+    bottom: 6px;
+    border-radius: 0;
+    height: 5px;
+}
+
+/* Estilo para texto de tarefas concluídas */
+.task-done {
+    text-decoration: line-through;
+    color: #a0a0a0;
+}

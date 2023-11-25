@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lembretes</title>
+    <link rel="stylesheet" href="styles.css"></head>
+<body>
+    <div class="outer-container">
+        <div class="container">
+            <h1>Novo Lembrete</h1>
+            <form id="taskForm">
+                <label for="todo">Nome:</label>
+                <input type="text" id="todo" name="todo" required>
+                <label for="date">Data:</label>
+                <input type="date" id="date" name="date" required>
+                <button type="submit">Adicionar</button>
+            </form>
+
+            <h1 class="classTitle">Tarefas</h1>
+            
+            <div id="taskList"></div>
+        </div>
+        
+    </div>
+
+    <script src="../scripts/script.js"></script>
+</body>
+</html>
