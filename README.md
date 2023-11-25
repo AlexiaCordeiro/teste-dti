@@ -1,9 +1,7 @@
 # Sistema de Criação de Lembretes
 
 Este é um sistema para criar lembretes seguindo a ideia apresentada no teste prático da dti digital.
-
-![Preview](https://github.com/AlexiaCordeiro/desafio-dti/assets/84211729/e0e54014-818f-4a57-8383-d5ae8db6a6f8)
-
+![projeto](https://github.com/AlexiaCordeiro/teste-dti/assets/84211729/0b8d7e99-9c3d-40af-896d-d569384eb352)
 ## Tecnologias Utilizadas
 
 - **Back-end em Javascript:** O projeto foi desenvolvido utilizando JavaScript como linguagem de back-end.
