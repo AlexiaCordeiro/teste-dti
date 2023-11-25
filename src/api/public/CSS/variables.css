@@ -1,0 +1,9 @@
+:root{
+    --color-principal: #272128;
+    --color-secundary: #3C313E;
+    --color-text:#D1BDD6;
+    --color-btn-positive: rgb(63, 141, 63);
+    --color-btn-positive-hover:rgb(20, 95, 1);
+    --color-btn-negative: #a0403e;
+    --color-btn-negative-hover:#bd2724;
+}

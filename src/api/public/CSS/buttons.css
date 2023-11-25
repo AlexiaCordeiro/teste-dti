@@ -1,0 +1,57 @@
+button {
+    cursor: pointer;
+    color: white;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    padding: 8px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    outline: none; /* Remove o contorno ao focar */
+    width: 80px;
+}
+
+.button-positive {
+    background-color: var(--color-btn-positive);
+}
+
+.button-positive:hover {
+    background-color: var(--color-btn-positive-hover);
+}
+
+.button-negative{
+    background-color: var(--color-btn-negative);
+}
+
+.button-negative:hover {
+    background-color: var(--color-btn-negative-hover);
+}
+
+/* Botões de ação */
+.button-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.task-actions button {
+    border: none;
+    padding: 5px 5px;
+    background-color: transparent;
+    transition: background-color 0.3s;
+    max-width: 25px;
+
+}
+
+.delete-btn {
+    color: var(--color-btn-negative);
+    font-weight: bold;
+}
+
+.edit-icon{
+    color: whitesmoke;
+}
+
+.edit-icon:hover,
+.delete-btn:hover {
+    background-color: var(--color-secundary);
+}
+

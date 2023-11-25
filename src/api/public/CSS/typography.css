@@ -1,0 +1,18 @@
+/* Estilo para títulos h1 */
+*{
+    font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+    margin-top: 0;
+    font-size: 24px;
+    color: var(--color-text);
+}
+
+/* Estilo para subtítulos h2 */
+h2 {
+    margin: 20px 0;
+    font-size: 20px;
+    color: var(--color-text); /* Cor para a data */
+    text-align: center; /* Centraliza o texto */
+}

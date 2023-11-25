@@ -1,23 +1,25 @@
+@import url("CSS/reset.css");
+@import url("CSS/typography.css");
+@import url("CSS/variables.css");
+@import url("CSS/modals.css");
+@import url("CSS/buttons.css");
+
 /* Estilos gerais */
 body {
-    font-family: 'Roboto', sans-serif; /* Aplica a fonte Roboto ao corpo */
-    margin: 0;
-    padding: 0;
-    background-color: #272128;
+    background-color: var(--color-principal);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    
 }
 
 /* Container externo */
 .outer-container {
-    background-color: #3C313E;
+    background-color: var(--color-secundary);
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 90%; /* Ajusta a largura */
-    max-width: 800px; /* Largura máxima */
+    width: 90%; 
+    max-width: 800px; 
     max-height: 90%;
     border-radius: 10px;
     overflow: hidden;
@@ -28,24 +30,9 @@ body {
 
 /* Container principal */
 .container {
-    max-width: 100%; /* Preenche a largura do container externo */
+    max-width: 100%; 
     margin: 0 auto;
     text-align: center;
-}
-
-/* Estilo para títulos h1 */
-h1 {
-    margin-top: 0;
-    font-size: 24px;
-    color: #D1BDD6;
-}
-
-/* Estilo para subtítulos h2 */
-h2 {
-    margin: 20px 0;
-    font-size: 20px;
-    color: #D1BDD6; /* Cor para a data */
-    text-align: center; /* Centraliza o texto */
 }
 
 /* Estilos para o formulário */
@@ -56,11 +43,7 @@ form {
     margin-bottom: 20px;
 }
 
-/* Estilos para rótulos */
-label {
-    margin-right: 10px;
-    color: #D1BDD6;
-}
+
 
 /* Estilos para inputs e botão */
 input[type="text"],
@@ -70,28 +53,26 @@ button {
     font-size: 16px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 5px;
     background: whitesmoke;
     color: black;
-    border: none; /* Remove a borda */
-    outline: none; /* Remove o contorno ao focar */
-}
-
-input[type="text"] {
-    width: 80%; /* Ajuste a largura conforme desejado */
-}
-
-button {
-    cursor: pointer;
-    background-color: rgb(63, 141, 63);
-    color: #fff;
     border: none;
-    border-radius: 4px;
-    transition: background-color 0.3s;
+    outline: none;
 }
 
-button:hover {
-    background-color: rgb(20, 95, 1);
+input[type="text"],
+input[type="date"]{
+    padding: 8px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: whitesmoke;
+    border: none; 
+    outline: none; 
+}
+input[type="text"] {
+    width: 80%; 
 }
 
 #taskList {
@@ -99,7 +80,7 @@ button:hover {
     text-align: left;
     scrollbar-width: auto; 
     scrollbar-color: gray transparent; 
-    max-height: 300px;
+    max-height: 250px;
     overflow-y: auto;
     padding-right: 20px; 
 }
@@ -117,20 +98,9 @@ button:hover {
     text-align: justify;
     padding-right: 8px;
     height: auto;
-    flex-direction: row; /* Altera para linha para o alinhamento horizontal */
+    flex-direction: row; 
 }
 
-/* Estilo para texto da tarefa */
-.task-text {
-    flex-grow: 1;
-    color: #fff;
-    text-align: left;
-    padding-right: 20px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    margin-right: 20px; /* Espaço entre o texto e os botões */
-}
 /* Estilos para scroll (para navegadores específicos) */
 #taskList::-webkit-scrollbar {
     width: 10px;
@@ -138,44 +108,6 @@ button:hover {
 
 #taskList::-webkit-scrollbar-track {
     background: #443847;
-}
-
-#taskList::-webkit-scrollbar-thumb {
-    background: #CF6260;
-    border-radius: 5px;
-}
-
-#taskList::-webkit-scrollbar-thumb:hover {
-    background: #a0403e;
-}
-
-/* Botões de ação */
-.task-actions button {
-    border: none;
-    padding: 5px 10px;
-    background-color: #443847;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    min-width: 16px;
-    margin-bottom: 5px;
-}
-
-
-/* Botão de exclusão */
-.delete-btn {
-    padding: 5px 10px;
-    color: #a0403e;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    min-width: 16px; /* Define a largura mínima desejada */
-    font-weight: bold;
-}
-
-.delete-btn:hover {
-    background-color: #3C313E;
 }
 
 /* Estilo para checkboxes */
@@ -197,16 +129,29 @@ input[type="checkbox"] {
 
 /* Estilo para checkbox quando marcado */
 input[type="checkbox"]:checked {
-    background-color: rgb(20, 95, 1);
-    border-color: rgb(20, 95, 1);
+    background-color: var(--color-btn-positive-hover);
+    border-color: var(--color-btn-positive-hover);
     text-decoration: line-through;
+}
+
+#taskList {
+    max-width: 100%; 
 }
 
 /* Estilo para label do checkbox */
 label {
     display: flex;
     align-items: center;
-    color: #D1BDD6;
+    color: var(--color-text);
+    text-wrap: balance;
+    max-width: 100%;
+}
+
+/* Estilos para itens da lista de tarefas */
+.task-displayer {
+    display: flex;
+    justify-content: space-between;
+    max-width: 100%;
 }
 
 /* Esconde visualmente o checkbox padrão */
@@ -224,7 +169,7 @@ input[type="checkbox"]::before {
 
 /* Estilo para o indicador do checkbox quando marcado */
 input[type="checkbox"]:checked::before {
-    background-color: #fff;
+    background-color: white;
     transform: rotate(45deg);
     top: 3px;
     left: 4px;
@@ -240,42 +185,6 @@ input[type="checkbox"]:checked::before {
     color: #a0a0a0;
 }
 
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #443847;
-    background-color: rgba(148, 146, 146, 0.815);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-content {
-    display: flex;
-    flex-direction: column;
-    background-color: #443847;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    align-items: center;
-}
-.modal-content button{
-    width: 80px;
-}
-
-.cancel-button {
-    background-color:#CF6260;
-}
-.cancel-button:hover {
-    background-color:#bd2724;
-}
-
-.save-button{
-    background-color: rgb(63, 141, 63);
-}
 .material-symbols-outlined {
     font-variation-settings:
     'FILL' 0,
@@ -285,25 +194,3 @@ input[type="checkbox"]:checked::before {
 }
 
 
-/* Posiciona o ícone de deletar no meio direito */
-.task-actions .delete-btn {
-    margin-right: auto;
-}
-
-.edit-icon:hover,
-.delete-btn:hover {
-    background-color: #3C313E;
-}
-
-/* Estilos para itens da lista de tarefas */
-.task-displayer {
-    display: flex;
-    flex-grow: 3;
-    justify-content: space-between;
-}
-
-
-.button-container{
-    display: flex;
-    flex-direction: column;
-}

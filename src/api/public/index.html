@@ -10,19 +10,27 @@
             <h1>Novo Lembrete</h1>
             <form id="taskForm">
                 <label for="todo">Nome:</label>
-                <input type="text" id="todo" name="todo" required>
+                <textarea rows="2" cols="60" type="text" id="todo" name="todo" required></textarea>
                 <label for="date">Data:</label>
                 <input type="date" id="date" name="date" required>
-                <button type="submit">Adicionar</button>
+                <button class="button-positive"type="submit">Adicionar</button>
             </form>
 
-            <h1 class="classTitle">Tarefas</h1>
-            
+            <label for="filter">Filtrar Tarefas:</label>
+        <div class="custom-select">
+            <select id="filter">
+                <option value="all" selected>Todas</option>
+                <option value="done">Feitas</option>
+                <option value="undone">A Fazer</option>
+            </select>
+        </div>
+
+
             <div id="taskList"></div>
         </div>
         
     </div>
 
-    <script src="../scripts/script.js"></script>
+    <script src="../scripts/script.js" type="module" ></script>
 </body>
 </html>
