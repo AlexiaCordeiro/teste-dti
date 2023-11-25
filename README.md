@@ -16,8 +16,8 @@ Antes de executar o projeto, certifique-se de ter o Node.js instalado em sua má
 1. **Clone este repositório e entre na pasta:**
 
     ```bash
-    git clone https://github.com/AlexiaCordeiro/desafio-dti.git
-    cd desafio-dti
+    git clone https://github.com/AlexiaCordeiro/teste-dti.git
+    cd teste-dti
     ```
 
 2. **Instale as dependências:**
@@ -35,10 +35,10 @@ Para iniciar o servidor e executar a aplicação, utilize o seguinte comando:
 ```bash
 npm run start
 ```
+Ele é acessado pelo link: http://localhost:8000/
 
 Para rodar os testes, faça:
 
 ```bash
 npm run test
 ```
-Ele é acessado pelo link: http://localhost:8000/
