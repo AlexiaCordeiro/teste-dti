@@ -24,6 +24,7 @@ Este é um sistema para criar lembretes seguindo a ideia apresentada no teste pr
 3. Criação de filtro de tarefas: para facilitar a visualização e o encontro de tarefas.
 4. Jest para testes: escolhido por ser um framework de testes de fácil utilização e ter uma curva de aprendizado relativamente suave.
 5. Uso do javascript: escolhida essa linguagem de programação, pois foi a recomendada no pdf do teste que me enviaram.
+6. Uso do nodemon: para que o servidor automaticamente atualize quando existir alguma atualização.
 
 ## Instalação
 
